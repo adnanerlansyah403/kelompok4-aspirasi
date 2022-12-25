@@ -15,7 +15,14 @@ return new class extends Migration
     {
         Schema::create('aspirasis', function (Blueprint $table) {
             $table->id();
+            $table->integer('id_user');
+            $table->longText('isi_aspirasi');
+            $table->boolean('status')->default(0);
+            $table->string('gambar')->nullable();
             $table->timestamps();
+
+            $table->foreign('id_user')->references('id')->on('users')
+                ->onDelete("cascade");
         });
     }
 

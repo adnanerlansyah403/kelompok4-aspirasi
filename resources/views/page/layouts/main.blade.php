@@ -2,9 +2,9 @@
 <html lang="en">
 
 <head>
-    <!-- Required meta tags -->
     <meta charset="utf-8">
     <meta name="viewport" content="width=device-width, initial-scale=1">
+    <title>@yield("title", "FarCapital")</title>
 
     <!-- Google Fonts -->
     <link href="https://fonts.gstatic.com" rel="preconnect">
@@ -19,6 +19,10 @@
     <link href="{{ asset("assets/vendor/remixicon/remixicon.css") }}" rel="stylesheet">
     <link href="{{ asset("assets/vendor/simple-datatables/style.css") }}" rel="stylesheet">
 
+    <!-- Template Main CSS File -->
+    <link href="{{ asset("assets/css/style.css") }}" rel="stylesheet">
+    
+
     <link href="https://cdnjs.cloudflare.com/ajax/libs/twitter-bootstrap/4.0.0- 
     alpha/css/bootstrap.css" rel="stylesheet">
    
@@ -28,20 +32,24 @@
     href="https://cdnjs.cloudflare.com/ajax/libs/toastr.js/latest/toastr.min.css">
    
    <script src="https://cdnjs.cloudflare.com/ajax/libs/toastr.js/latest/js/toastr.min.js"></script>
-
-    <!-- Template Main CSS File -->
-    <link href="/css/style.css" rel="stylesheet">
-    <title>@yield("title", "Login Page")</title>
 </head>
 
 <body>
-    {{-- @include('partials.navbar') --}}
-    <main>
-        <div class="container">
-            @yield('content_app')
-        </div>
+    @include('page.layouts.header')
+
+    @include('page.layouts.sidebar')
+
+    <main id="main" class="main">
+        @yield('container')
     </main>
-    
+
+    <!-- ======= Footer ======= -->
+    <footer id="footer" class="footer">
+        <div class="copyright">
+        &copy; Copyright <strong><span>Aspirasi Masyarakat</span></strong>. All Rights Reserved
+        </div>
+    </footer><!-- End Footer -->
+
     <!-- Vendor JS Files -->
     <script src="{{ asset("assets/vendor/apexcharts/apexcharts.min.js") }}"></script>
     <script src="{{ asset("assets/vendor/bootstrap/js/bootstrap.bundle.min.js") }}"></script>
@@ -69,7 +77,7 @@
         @endforeach
 
     @endif
-
+    
 </body>
 
 </html>

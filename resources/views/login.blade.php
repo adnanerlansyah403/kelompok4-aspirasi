@@ -1,6 +1,6 @@
 @extends('layouts.main')
 
-@section('container')
+@section('content_app')
 
 <section class="section register min-vh-100 d-flex flex-column align-items-center justify-content-center py-4">
     <div class="container">
@@ -14,13 +14,16 @@
                     <button type="button" class="btn-close" data-bs-dismiss="alert" aria-label="Close"></button>
                 </div>
                 @endif
-
-                @if(session()->has('loginError'))
-                <div class="alert alert-warning alert-dismissible fade show" role="alert">
-                    {{ session('loginError') }}
-                    <button type="button" class="btn-close" data-bs-dismiss="alert" aria-label="Close"></button>
-                </div>
-                @endif
+                
+                {{-- @if ($errors->any())
+                    <div class="alert alert-danger">
+                        <ul>
+                            @foreach ($errors->all() as $error)
+                                <li>{{ $error }}</li>
+                            @endforeach
+                        </ul>
+                    </div>
+                @endif --}}
 
                 <div class="card mb-3">
                     <div class="card-body">
@@ -28,7 +31,7 @@
                             <h5 class="card-title text-center pb-0 fs-4">Login to Your Account</h5>
                             <p class="text-center small">Enter your username & password to login</p>
                         </div>
-                        <form action="/" method="POST" class="row g-3 needs-validation">
+                        <form action="{{ route("auth.login") }}" method="POST" class="row g-3 needs-validation">
                             @csrf
                             <div class="col-12">
                                 <label for="email" class="form-label">Email Address</label>
@@ -70,6 +73,27 @@
 </section>
 
 
+<script>
+
+    // toastr.options =
+    // {
+    //     "closeButton" : true,
+    //     "progressBar" : true
+    // }
+    // toastr.error("test");
+    @if ($errors->any())
+        @foreach ($errors->all() as $error)
+
+                toastr.options =
+                {
+                    "closeButton" : true,
+                    "progressBar" : true
+                }
+                toastr.error({{ $error }});
+        @endforeach
+        
+    @endif
+</script>
 
 
 @endsection
