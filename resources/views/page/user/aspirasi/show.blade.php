@@ -57,9 +57,11 @@
                     </div>
                 </div>
 
-                {{-- <div class="col-12">
-                    <img src="{{ asset('aduan/' . $aspirasi->gambar) }}" style="width: 100%; object-fit: cover;" height="400" alt="">
-                </div> --}}
+                @isset($aspirasi["gambar"])
+                    <div class="col-12">
+                        <img src="{{ asset($aspirasi["gambar"]) }}" style="width: 100%; object-fit: cover;" height="400" alt="">
+                    </div>
+                @endisset
 
 
                 <div class="text-center">

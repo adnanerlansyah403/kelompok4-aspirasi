@@ -63,6 +63,19 @@
     <!-- Template Main JS File -->
     <script src="{{ asset("assets/js/main.js") }}"></script>
 
+    @if (session()->has('success'))
+
+        <script>
+            toastr.options =
+            {
+                "closeButton" : true,
+                "progressBar" : true
+            }
+            toastr.success('{{ session('success') }}');
+        </script>
+
+    @endif
+
     @if ($errors->any())
 
         @foreach ($errors->all() as $error)

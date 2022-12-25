@@ -56,11 +56,11 @@ return [
             'throw' => false,
         ],
 
-        'uploads' => [
-            'driver' => 'local',
-            'root' => storage_path('app/public'),
-            'visibillity' => 'public',
-        ]
+        // 'uploads' => [
+        //     'driver' => 'local',
+        //     'root' => storage_path('app/public'),
+        //     'visibillity' => 'public',
+        // ]
 
     ],
 

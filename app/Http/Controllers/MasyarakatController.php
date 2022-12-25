@@ -46,7 +46,8 @@ class MasyarakatController extends Controller
             return back()->withErrors($responses["errors"]);
         }
 
-        return redirect()->route("masyarakat.index");
+        return redirect()->route("masyarakat.index")
+            ->with('success', 'Berhasil membuat data aspirasi');
     }
 
     public function update(Request $request, $id)
@@ -64,7 +65,8 @@ class MasyarakatController extends Controller
 
         $aspirasi = $responses["data"];
 
-        return redirect()->route("masyarakat.index");
+        return redirect()->route("masyarakat.index")
+            ->with('success', 'Berhasil memperbarui data aspirasi');
     }
 
     public function destroy($id)
@@ -80,7 +82,8 @@ class MasyarakatController extends Controller
             return back()->withErrors($responses["errors"]);
         }
 
-        return redirect()->back();
+        return redirect()->back()
+            ->with('success', 'Berhasil menghapus data aspirasi');
     }
 
     public function edit($id)

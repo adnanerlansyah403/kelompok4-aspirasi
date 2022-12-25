@@ -122,7 +122,7 @@ class MasyarakatController extends Controller
             file_exists($aspirasi->gambar) ?
                 unlink(public_path($aspirasi->gambar)) :
                 false;
-            $gambar = $request->file("gambar")->store("gambar", "public");
+            $gambar = $request->file("gambar")->store("gambar_aspirasi", "public");
         }
 
         $aspirasi->update([

@@ -72,7 +72,7 @@
                 <div class="modal-body">
                   @if($a["gambar"] != null)
                   <div class="text-center">
-                    <img src="{{ url('/aduan/'.$a["gambar"]) }}" alt="gambar" class="w-100">
+                    <img src="{{ asset($a["gambar"]) }}" alt="gambar" class="w-100">
                   </div>
                   @else
                   <div class="text-center">
