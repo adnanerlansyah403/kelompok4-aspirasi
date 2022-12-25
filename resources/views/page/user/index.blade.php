@@ -57,7 +57,7 @@
                 <button class="btn btn-sm btn-secondary" ><i class="bi bi-pencil-square"></i></button> 
                 <button class="btn btn-sm btn-secondary"><i class="bi bi-trash"></i></button>
               @else
-                <a href="/editaduan/{{ $a["id"] }}" class="btn btn-sm btn-primary"><i class="bi bi-pencil-square"></i></a> 
+                <a href="{{ route("masyarakat.edit.aspirasi", $a["id"]) }}" class="btn btn-sm btn-primary"><i class="bi bi-pencil-square"></i></a> 
                 <a href="{{ route("masyarakat.delete.aspirasi", $a["id"]) }}" class="btn btn-sm btn-danger"><i class="bi bi-trash"></i></a>
               @endif
             </td>

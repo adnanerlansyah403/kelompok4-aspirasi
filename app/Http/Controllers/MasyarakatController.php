@@ -38,14 +38,31 @@ class MasyarakatController extends Controller
         $responses = HttpClient::fetch(
             "POST",
             "http://localhost:8001/api/masyarakat/store/aspirasi/" . session()->get("id_user"),
-            $request->all()
+            $request->all(),
+            $request->file()
         );
 
         if (isset($responses["errors"])) {
             return back()->withErrors($responses["errors"]);
         }
 
-        // dd($responses);
+        return redirect()->route("masyarakat.index");
+    }
+
+    public function update(Request $request, $id)
+    {
+        $responses = HttpClient::fetch(
+            "POST",
+            "http://localhost:8001/api/masyarakat/aspirasi/update/" . $id,
+            $request->all(),
+            $request->file()
+        );
+
+        if (isset($responses["errors"])) {
+            return back()->withErrors($responses["errors"]);
+        }
+
+        $aspirasi = $responses["data"];
 
         return redirect()->route("masyarakat.index");
     }
@@ -64,5 +81,19 @@ class MasyarakatController extends Controller
         }
 
         return redirect()->back();
+    }
+
+    public function edit($id)
+    {
+        $responses = HttpClient::fetch(
+            "GET",
+            "http://localhost:8001/api/masyarakat/edit/" . $id . "/aspirasi"
+        );
+
+        $aspirasi = $responses["data"];
+
+        // dd($aspirasi);
+
+        return view("page.user.aspirasi.edit", compact("aspirasi"));
     }
 }

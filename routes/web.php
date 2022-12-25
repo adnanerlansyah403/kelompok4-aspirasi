@@ -76,4 +76,8 @@ Route::prefix("/masyarakat")
         Route::post("/store/aspirasi", [MasyarakatController::class, "store"])->name("store.aspirasi");
 
         Route::get("/delete/{id}/aspirasi", [MasyarakatController::class, "destroy"])->name("delete.aspirasi");
+
+        Route::get("/edit/{id}/aspirasi", [MasyarakatController::class, "edit"])->name("edit.aspirasi");
+
+        Route::post("/aspirasi/update/{id}", [MasyarakatController::class, "update"])->name("update.aspirasi");
     });
